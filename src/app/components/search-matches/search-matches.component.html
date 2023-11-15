@@ -1,0 +1,39 @@
+<app-banner title="Search"></app-banner>
+<div class="site-section">
+  <div class="container">
+    <div class="row d-flex justify-content-center">
+      <div class="col-lg-5">
+        <form [formGroup]="searchForm">
+          <div class="form-group">
+            <input formControlName="scoreOne" type="number" class="form-control text-center" placeholder="Score One">
+          </div>
+          <div class="form-group"
+            *ngIf="searchForm.controls['scoreOne'].invalid &&(searchForm.controls['scoreOne'].touched || searchForm.controls['scoreOne'].dirty) ">
+            <div class="text-danger" *ngIf="searchForm.controls['scoreOne'].errors.required">
+              Score One is required</div>
+          </div>
+          <div class="form-group">
+            <input formControlName="scoreTwo" type="number" class="form-control text-center" placeholder="Score Two">
+          </div>
+          <div class="form-group"
+            *ngIf="searchForm.controls['scoreTwo'].invalid &&(searchForm.controls['scoreTwo'].touched || searchForm.controls['scoreTwo'].dirty) ">
+            <div class="text-danger" *ngIf="searchForm.controls['scoreTwo'].errors.required">
+              Score Two is required</div>
+          </div>
+          
+          <div class="form-group text-center">
+            <button (click)="searchByScore()" [disabled]="searchForm.invalid" class="btn btn-primary py-3 px-5">Search</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div  style="margin-top: 100px" *ngFor="let match of matches">
+        
+        <app-result [resultInput]="match"></app-result>
+
+    </div>
+    <div  *ngIf="matches?.length==0" class="text-center text-danger">
+        Not Founded
+    </div>
+  </div>
+</div>

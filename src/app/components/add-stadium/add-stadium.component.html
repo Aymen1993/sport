@@ -1,0 +1,57 @@
+<app-banner title="{{formTitle}}"></app-banner>
+<div class="site-section">
+  <div class="container">
+    <div class="row d-flex justify-content-center">
+      <div class="col-lg-5">
+        <form [formGroup]="stadiumForm">
+          <div class="form-group">
+            <input type="text" class="form-control text-center" formControlName="name" [(ngModel)]="stadium.name" placeholder="Name">
+          </div>
+          <div class="form-group"
+            *ngIf="stadiumForm.controls['name'].invalid &&(stadiumForm.controls['name'].touched || stadiumForm.controls['name'].dirty) ">
+            <div class="FormError" *ngIf="stadiumForm.controls['name'].errors.required">
+              Name is required
+            </div>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control text-center" formControlName="capacity" [(ngModel)]="stadium.capacity" placeholder="capacity">
+          </div>
+          <div class="form-group"
+            *ngIf="stadiumForm.controls['capacity'].invalid &&(stadiumForm.controls['capacity'].touched || stadiumForm.controls['capacity'].dirty) ">
+            <div class="FormError" *ngIf="stadiumForm.controls['capacity'].errors.required">
+              Capacity is required
+            </div>
+          </div>
+
+          <div class="form-group">
+            <select class="custom-select" formControlName="country" [(ngModel)]="stadium.country">
+              <option selected>Please select country</option>
+              <option value="{{country.name}}" *ngFor="let country of countries">{{country.name}}</option>
+            </select>
+          </div>
+          <div class="form-group text-center">
+            <button class="btn btn-primary py-3 px-5" (click)="addStadium()">{{formTitle}}</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container" *ngIf="stadiums.length>0">
+  <table class="table text-center">
+    <thead>
+        <th>Id</th>
+        <th>Stadium</th>
+        <th>Owner</th>
+        <th>Foundation</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let stadium of stadiums">
+            <td>{{stadium._id}}</td>
+            <td>{{stadium.name}}</td>
+            <td>{{stadium.capacity}}</td>
+            <td>{{stadium.country}}</td>
+        </tr>
+    </tbody>
+</table>
+</div>

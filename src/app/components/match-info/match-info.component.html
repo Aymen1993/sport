@@ -1,0 +1,26 @@
+<app-banner title="Match Information"></app-banner>
+<div>
+  <app-result [resultInput]="match"></app-result>
+</div>
+<div class="site-section">
+  <div class="container">
+    <div class="row d-flex justify-content-center">
+      <form [formGroup]="commentForm">
+        <div class="form-group">
+          <input formControlName="content" type="text" class="form-control" [placeholder]="Comment">
+        </div>
+        <div class="form-group"
+          *ngIf="commentForm.controls['content'].invalid &&(commentForm.controls['content'].touched || commentForm.controls['content'].dirty) ">
+          <div class="text-danger" *ngIf="commentForm.controls['content'].errors.required">
+            content is required</div>
+        </div>
+
+        <div class="form-group text-center">
+          <button (click)="addComment()" [disabled]="commentForm.invalid"
+            class="btn btn-primary py-3 px-5">Add</button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>

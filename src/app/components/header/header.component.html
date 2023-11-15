@@ -1,0 +1,65 @@
+<div class="site-mobile-menu site-navbar-target">
+    <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close">
+            <span class="icon-close2 js-menu-toggle"></span>
+        </div>
+    </div>
+    <div class="site-mobile-menu-body"></div>
+</div>
+
+<header class="site-navbar py-4" role="banner">
+
+    <div class="container">
+        <div class="d-flex align-items-center">
+            <div class="site-logo">
+                <a routerLink="">
+                    <img src="assets/images/logo.png" alt="Logo">
+                </a>
+            </div>
+            <div class="ml-auto">
+                <nav class="site-navigation position-relative text-right" role="navigation">
+                    <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
+                        <li class="active"><a routerLink="" class="nav-link">Home</a></li>
+                        <li><a routerLink="matches" class="nav-link">Matches</a></li>
+                        <li><a routerLink="players" class="nav-link">Players</a></li>
+                        <li><a routerLink="apiTeams" class="nav-link">Teams</a></li>
+                        <li><a *ngIf="message" routerLink="" class="nav-link">Welcome {{message}}</a></li>
+                        <li class="nav-item dropdown" *ngIf="role=='admin'">
+                            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Dashboard
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" routerLink="addMatch">Add Match</a>
+                                <a class="dropdown-item" routerLink="addPlayer">Add Player</a>
+                                <a class="dropdown-item" routerLink="addStadium">Add Stadium</a>
+                                <a class="dropdown-item" routerLink="country">Add Country</a>
+                                <a class="dropdown-item" routerLink="addTeam">Add Team</a>
+                                <a class="dropdown-item" routerLink="admin">Admin</a>
+                            </div>
+                        </li>
+                        <li class="nav-item" *ngIf="isLoggedIn; else logInTemplate">
+                            <a class="nav-link" (click)="logout()">Logout</a>
+                        </li>
+                        <!-- <ng-template #logInTemplate> -->
+                            <li class="nav-item" *ngIf="!isLoggedIn">
+                                <a class="nav-link" routerLink="connexion">Login</a>
+                            </li>
+                            <li class="nav-item" *ngIf="!isLoggedIn">
+                                <a class="nav-link" routerLink="subscription">Signup</a>
+                            </li>
+                        <!-- </ng-template> -->
+                        <li><a routerLink="searchWeather" class="nav-link">Weather</a></li>
+                        <li class="nav-item">
+                            <a class='bi bi-search' routerLink="searchMatches"></a>
+                      </li>
+                    </ul>
+                </nav>
+                <a class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black float-right text-white">
+                    <span class="icon-menu h3 text-white"></span>
+                    </a>
+            </div>
+        </div>
+    </div>
+
+</header>

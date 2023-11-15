@@ -1,0 +1,24 @@
+<table class="table text-center">
+    <thead>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Number</th>
+        <th>Age</th>
+        <th>Position</th>
+        <th colspan="3">Actions</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let player of players">
+            <td>{{player._id}}</td>
+            <td>{{player.name}}</td>
+            <td>{{player.number}}</td>
+            <td>{{player.age}}</td>
+            <td>{{player.position}}</td>
+            <td class="d-flex justify-content-between" colspan="3">
+                <button class="btn btn-success" style="border: transparent;" (click)="goToDisplay(player._id)">Display</button>
+                <button class="btn btn-warning" style="border: transparent;" (click)="goToEdit(player._id)">Edit</button>
+                <button class="btn btn-danger" style="border: transparent;" (click)="deletePlayer(player._id)">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

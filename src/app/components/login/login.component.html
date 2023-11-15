@@ -1,0 +1,35 @@
+<app-banner title="Login"></app-banner>
+<div class="site-section">
+  <div class="container">
+    <div class="row d-flex justify-content-center">
+      <div class="col-lg-5">
+        <form [formGroup]="loginForm">
+          <div class="form-group">
+            <input formControlName="email" type="email" class="form-control" placeholder="email">
+          </div>
+          <div class="form-group"
+            *ngIf="loginForm.controls['email'].invalid &&(loginForm.controls['email'].touched || loginForm.controls['email'].dirty) ">
+            <div class="text-danger" *ngIf="loginForm.controls['email'].errors.required">
+              Email is required</div>
+            <div class="text-danger" *ngIf="loginForm.controls['email'].errors.email">
+              Form email is invalid</div>
+          </div>
+
+          <div class="form-group">
+            <input formControlName="pwd" type="password" class="form-control" placeholder="Password">
+          </div>
+          <div class="form-group"
+            *ngIf="loginForm.controls['pwd'].invalid &&(loginForm.controls['pwd'].touched || loginForm.controls['pwd'].dirty) ">
+            <div class="text-danger" *ngIf="loginForm.controls['pwd'].errors.required">
+              Password is required</div>
+          </div>
+          
+          <div class="form-group text-center">
+            <button (click)="login()" [disabled]="loginForm.invalid" class="btn btn-primary py-3 px-5">Login</button>
+          </div>
+          <div *ngIf="notFound" class="text-danger text-center">Check your email or password</div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,28 @@
+<app-banner [title]="formTitle"></app-banner>
+<div class="site-section">
+  <div class="container">
+    <div class="row d-flex justify-content-center">
+      <div class="col-lg-5">
+        <form #playerForm="ngForm" (ngSubmit)="addPlayer()" class="p-5 bg-light">
+          <div class="form-group">
+            <input type="text" class="form-control text-center" [(ngModel)]="player.name" [ngModelOptions]="{standalone: true}" placeholder="Name">
+          </div>
+          <div class="form-group">
+            <input type="number" class="form-control text-center" [(ngModel)]="player.number" [ngModelOptions]="{standalone: true}" placeholder="number">
+          </div>
+          <div class="form-group">
+            <input type="number" class="form-control text-center" [(ngModel)]="player.age" [ngModelOptions]="{standalone: true}" placeholder="age">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control text-center" [(ngModel)]="player.position" [ngModelOptions]="{standalone: true}" placeholder="Position">
+          </div>
+
+          <div class="form-group text-center">
+            <!-- <input type="submit" class="btn btn-primary py-3 px-5" value="Add Player"> -->
+            <button class="btn btn-primary py-3 px-5">{{formTitle}}</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

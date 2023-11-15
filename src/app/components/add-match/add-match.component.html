@@ -1,0 +1,30 @@
+<app-banner [title]="formTitle"></app-banner>
+
+<div class="site-section">
+  <div class="container">
+    <div class="row d-flex justify-content-center">
+      <div class="col-lg-4">
+        <form #matchForm="ngForm" (ngSubmit)="validate()">
+         
+          <div class="form-group">
+            <input type="text" class="form-control text-center" [(ngModel)]="match.teamOne" [ngModelOptions]="{standalone: true}" placeholder="Team one">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control text-center" [(ngModel)]="match.teamTwo" [ngModelOptions]="{standalone: true}" placeholder="Team Two">
+          </div>
+          <div class="form-group">
+            <input type="number" class="form-control text-center" [(ngModel)]="match.scoreOne" [ngModelOptions]="{standalone: true}" placeholder="score one">
+          </div>
+          <div class="form-group">
+            <input type="number" class="form-control text-center" [(ngModel)]="match.scoreTwo" [ngModelOptions]="{standalone: true}" placeholder="Score Two">
+          </div>
+
+          <div class="form-group text-center">
+            <!-- <input type="submit" class="btn btn-primary py-3 px-5" value="Add match"> -->
+            <button type="submit" class="btn btn-primary py-3 px-5">{{formTitle}}</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

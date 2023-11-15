@@ -1,0 +1,53 @@
+<app-banner title="Edit"></app-banner>
+<div class="site-section">
+  <div class="container">
+    <div class="row d-flex justify-content-center">
+      <div class="col-lg-5">
+        <form [formGroup]="editForm">
+          <div class="form-group">
+            <input formControlName="tel"  type="number" class="form-control" placeholder="tel">
+          </div>
+          <div class="form-group"
+            *ngIf="editForm.controls['tel'].invalid &&(editForm.controls['tel'].touched || editForm.controls['tel'].dirty) ">
+            <div class="text-danger" *ngIf="editForm.controls['tel'].errors.required">
+              tel is required</div>
+              <div class="text-danger" *ngIf="editForm.controls['tel'].errors.pattern">
+                Form Tel is invalid
+            </div>
+          </div>
+
+          <div class="form-group">
+            <input type="text" class="form-control text-capitalize" formControlName="nom"
+                placeholder="Nom">
+        </div>
+        <div class="form-group" *ngIf="editForm.controls['nom'].invalid &&
+            (editForm.controls['nom'].touched || editForm.controls['nom'].dirty) ">
+            <div class="FormError" *ngIf="editForm.controls['nom'].errors.required">
+                Nom is required
+            </div>
+            <div class="FormError" *ngIf="editForm.controls['nom'].errors.minlength">
+                Nom must have at least 3 chars
+            </div>
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control text-capitalize" formControlName="prenom"
+                placeholder="Prenom">
+        </div>
+        <div class="form-group" *ngIf="editForm.controls['prenom'].invalid &&
+            (editForm.controls['prenom'].touched || editForm.controls['prenom'].dirty) ">
+            <div class="FormError" *ngIf="editForm.controls['prenom'].errors.required">
+                Prenom is required
+            </div>
+            <div class="FormError" *ngIf="editForm.controls['prenom'].errors.minlength">
+                Prenom must have at least 5 chars
+            </div>
+        </div>
+          
+          <div class="form-group text-center">
+            <button (click)="edit()" [disabled]="editForm.invalid" class="btn btn-primary py-3 px-5">Edit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

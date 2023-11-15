@@ -1,0 +1,71 @@
+<app-banner [title]="formTitle"></app-banner>
+<div class="site-section">
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="col-lg-6">
+                <form [formGroup]="inscriptionForm">
+                    <div class="form-group">
+                        <input type="number" class="form-control text-capitalize" formControlName="tel"
+                            placeholder="Tel">
+                    </div>
+                    <div class="form-group" *ngIf="inscriptionForm.controls['tel'].invalid &&
+                        (inscriptionForm.controls['tel'].touched || inscriptionForm.controls['tel'].dirty) ">
+                        <div class="FormError" *ngIf="inscriptionForm.controls['tel'].errors.required">
+                           Tel is required
+                        </div>
+                        <div class="text-danger" *ngIf="inscriptionForm.controls['tel'].errors.pattern">
+                            Form Tel is invalid
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" formControlName="pwd" placeholder="Password">
+                    </div>
+                    <div class="form-group" *ngIf="inscriptionForm.controls['pwd'].invalid &&
+                        (inscriptionForm.controls['pwd'].touched || inscriptionForm.controls['pwd'].dirty) ">
+                        <div class="FormError" *ngIf="inscriptionForm.controls['pwd'].errors.required">
+                            Password is required
+                        </div>
+                        <div class="FormError" *ngIf="inscriptionForm.controls['pwd'].errors.minlength">
+                            Password must have at least 10 chars
+                        </div>
+                        <div class="FormError" *ngIf="inscriptionForm.controls['pwd'].errors.maxlength">
+                            Password must have at most 14 chars
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control text-capitalize" formControlName="nom"
+                            placeholder="Nom">
+                    </div>
+                    <div class="form-group" *ngIf="inscriptionForm.controls['nom'].invalid &&
+                        (inscriptionForm.controls['nom'].touched || inscriptionForm.controls['nom'].dirty) ">
+                        <div class="FormError" *ngIf="inscriptionForm.controls['nom'].errors.required">
+                            Nom is required
+                        </div>
+                        <div class="FormError" *ngIf="inscriptionForm.controls['nom'].errors.minlength">
+                            Nom must have at least 3 chars
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control text-capitalize" formControlName="prenom"
+                            placeholder="Prenom">
+                    </div>
+                    <div class="form-group" *ngIf="inscriptionForm.controls['prenom'].invalid &&
+                        (inscriptionForm.controls['prenom'].touched || inscriptionForm.controls['prenom'].dirty) ">
+                        <div class="FormError" *ngIf="inscriptionForm.controls['prenom'].errors.required">
+                            Prenom is required
+                        </div>
+                        <div class="FormError" *ngIf="inscriptionForm.controls['prenom'].errors.minlength">
+                            Prenom must have at least 5 chars
+                        </div>
+                    </div>
+                    <div class="form-group text-center">
+                        <!-- <input type="submit" class="btn btn-primary py-3 px-5" value="Add Player"> -->
+                        <button class="btn btn-primary py-3 px-5" (click)="inscription()" [disabled]="inscriptionForm.invalid">
+                            {{formTitle}}
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

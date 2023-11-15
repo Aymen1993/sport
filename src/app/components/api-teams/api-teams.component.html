@@ -1,0 +1,57 @@
+<app-banner title="Search Team"></app-banner>
+<div class="site-section">
+  <div class="container">
+    <div class="row d-flex justify-content-center">
+      <div class="col-lg-5">
+        <form [formGroup]="countryForm">
+          <div class="form-group">
+            <input formControlName="country" type="text" class="form-control text-center text-capitalize"
+              placeholder="Insert Country">
+          </div>
+          <div class="form-group"
+            *ngIf="countryForm.controls['country'].invalid &&(countryForm.controls['country'].touched || countryForm.controls['country'].dirty) ">
+            <div class="text-danger" *ngIf="countryForm.controls['country'].errors.required">
+              Country is required</div>
+          </div>
+
+          <div class="form-group text-center">
+            <button (click)="searchteamByCountry()" [disabled]="countryForm.invalid"
+              class="btn btn-primary py-3 px-5">Search</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="row  d-flex justify-content-center table-responsive" *ngIf="teams.length>0">
+      <h5>{{teams.length}} Teams</h5>
+      <table class="table  text-center table-bordered" >
+        <thead>
+          <th>Id</th>
+          <th>Logo</th>
+          <th>Code</th>
+          <th>Name</th>
+          <th>founded</th>
+          <th>Stadium</th>
+          <th>City</th>
+          <th>Capacity</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let elt of pageOfItems">
+            <td>{{elt.team_id}}</td>
+            <td><img src="{{elt.logo}}" width="50px" alt=""></td>
+            <td>{{elt.code}}</td>
+            <td>{{elt.name}}</td>
+            <td>{{elt.founded}}</td>
+            <td>{{elt.venue_name}}</td>
+            <td>{{elt.venue_city}}</td>
+            <td>{{elt.venue_capacity}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <span class="text-center text-danger text-capitalize" *ngIf="nbrOfTeams==0">Not founded</span>
+    <div class="row d-flex justify-content-center">
+      <jw-pagination [items]="teams" [pageSize]="20" (changePage)="onChangePage($event)">
+      </jw-pagination>
+    </div>
+  </div>
+</div>

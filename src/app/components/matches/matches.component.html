@@ -1,0 +1,10 @@
+<app-banner title="Matches"></app-banner>
+<div class="container">
+  <div *ngFor="let elt of pageOfItems"  style="margin-top: 100px;margin-bottom: 100px;">
+    <app-result [roleInput]="role" [resultInput]="elt" (newMatches)="updateMatches($event)"></app-result>
+  </div>
+  <div class="row d-flex justify-content-center">
+    <jw-pagination [items]="matches" [pageSize]="4" (changePage)="onChangePage($event)">
+    </jw-pagination>
+</div>
+</div>

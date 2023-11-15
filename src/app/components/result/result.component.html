@@ -1,0 +1,56 @@
+<div class="container">
+
+    <div class="row">
+        <div class="col-lg-12">
+
+            <div class="d-flex team-vs">
+                <span class="score">
+                    <span
+                        [ngStyle]="{'color':resultStyle(resultInput.scoreOne,resultInput.scoreTwo)[0]}">{{resultInput.scoreOne}}</span>
+                    -
+                    <span
+                        [ngStyle]="{'color':resultStyle(resultInput.scoreTwo,resultInput.scoreOne)[0]}">{{resultInput.scoreTwo}}</span>
+                </span>
+                <div class="team-1 w-50">
+                    <div class="team-details w-100 text-center">
+                        <img src="assets/images/logo_1.png" alt="Image" class="img-fluid">
+                        <h3>
+                            <!-- <span
+                                [ngClass]="{'win':resultStyle(resultInput.scoreOne,resultInput.scoreTwo)[1]==1,
+                                            'loss':resultStyle(resultInput.scoreOne,resultInput.scoreTwo)[1]==-1,
+                                            'draw':resultStyle(resultInput.scoreOne,resultInput.scoreTwo)[1]==0    
+                            }">{{resultInput.teamOne}}
+                            </span> -->
+                            <span
+                                [class]="resultStyle(resultInput.scoreOne,resultInput.scoreTwo)[2]">{{resultInput.teamOne}}
+                            </span>
+                        </h3>
+                        <ul class="list-unstyled" *ngFor="let goal of resultInput.buteurs1">
+                            <li><span [ngStyle]="{'color':butteurStyle(goal.time)}">{{goal.name}}</span> ({{goal.time}})</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="team-2 w-50">
+                    <div class="team-details w-100 text-center">
+                        <img src="assets/images/logo_2.png" alt="Image" class="img-fluid">
+                        <h3>
+                            <span
+                                [class]="resultStyle(resultInput.scoreTwo,resultInput.scoreOne)[2]">{{resultInput.teamTwo}}
+                            </span>
+                        </h3>
+                        <ul class="list-unstyled" *ngFor="let goal of resultInput.buteurs2">
+                            <li><span [ngStyle]="{'color':butteurStyle(goal.time)}">{{goal.name}}</span>  ({{goal.time}})</li>
+                        </ul>
+                    </div>
+                </div>
+                
+            </div>
+            
+        </div>
+       
+        
+    </div>
+    <div *ngIf="roleInput=='admin'" class="text-center mt-2">
+        <button class="btn btn-danger" style="width: 150px;" (click)="deleteMatch(resultInput._id)" >Delete</button>
+    </div>
+</div>

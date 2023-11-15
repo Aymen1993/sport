@@ -1,0 +1,33 @@
+<app-banner title="Se connecter"></app-banner>
+<div class="site-section">
+  <div class="container">
+    <div class="row d-flex justify-content-center">
+      <div class="col-lg-5">
+        <form [formGroup]="connexionForm">
+          <div class="form-group">
+            <input formControlName="tel" type="number" class="form-control" placeholder="tel">
+          </div>
+          <div class="form-group"
+            *ngIf="connexionForm.controls['tel'].invalid &&(connexionForm.controls['tel'].touched || connexionForm.controls['tel'].dirty) ">
+            <div class="text-danger" *ngIf="connexionForm.controls['tel'].errors.required">
+              tel is required</div>
+          </div>
+
+          <div class="form-group">
+            <input formControlName="pwd" type="password" class="form-control" placeholder="Password">
+          </div>
+          <div class="form-group"
+            *ngIf="connexionForm.controls['pwd'].invalid &&(connexionForm.controls['pwd'].touched || connexionForm.controls['pwd'].dirty) ">
+            <div class="text-danger" *ngIf="connexionForm.controls['pwd'].errors.required">
+              Password is required</div>
+          </div>
+          
+          <div class="form-group text-center">
+            <button (click)="login()" [disabled]="connexionForm.invalid" class="btn btn-primary py-3 px-5">Se connecter</button>
+          </div>
+          <div *ngIf="notFound" class="text-danger text-center">Check your tel or password</div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

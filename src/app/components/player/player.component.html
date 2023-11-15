@@ -1,0 +1,24 @@
+<div class="widget-next-match">
+    <div class="widget-title text-center">
+        <h3>{{playerInput.name}}</h3>
+    </div>
+    <div class="widget-body mb-3">
+        <div class="widget-vs">
+            <div class="d-flex align-items-center justify-content-around justify-content-between w-100">
+                <div class="team-1 text-center">
+                    <img src="assets/images/CR7.png" style="height: 130px;width: 120px;" alt="Image">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center widget-vs-contents mb-4">
+        <h4 [ngStyle]="{color:positionColor(playerInput.position)}">{{playerInput.position}}</h4>
+        <p class="mb-5">
+            <!-- <span class="d-block">Name: {{playerInput.name}}</span> -->
+            <span class="d-block">Age: {{playerInput.age}}</span>
+            <span class="d-block">Number: {{playerInput.number}}</span>
+        </p>
+
+    </div>
+</div>

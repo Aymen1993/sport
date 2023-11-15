@@ -1,0 +1,14 @@
+<app-banner title="All Players"></app-banner>
+<div class="site-section bg-dark">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4" *ngFor="let elt of pageOfItems" style="margin-bottom: 20px;">
+        <app-player [playerInput]="elt"></app-player>
+      </div>
+    </div>
+    <div class="row d-flex justify-content-center">
+      <jw-pagination [items]="players" [pageSize]="6" (changePage)="onChangePage($event)">
+      </jw-pagination>
+  </div>
+  </div>
+</div>
